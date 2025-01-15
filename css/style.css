@@ -5,6 +5,13 @@ body {
   background-color: #343333;
   letter-spacing: 1px;
 }
+.hidden {
+  display: none
+}
+.p {
+  margin-top: 1.5rem;
+  display: none
+}
 
 .overlay {
   width: 100%;
@@ -28,6 +35,9 @@ body {
 @media screen and (max-width: 500px) {
   .slides-navigation {
     visibility: hidden;
+  }
+  .p{
+    display: block
   }
 }
 
@@ -71,7 +81,7 @@ body {
   color: #bdc3c7;
 }
 .white {
-  color: #fff;
+  color:rgb(220, 208, 208);
 }
 /*  */
 .titleMessage .heading .sub {

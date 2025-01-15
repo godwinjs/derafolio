@@ -6,17 +6,62 @@ date.innerHTML = d.getFullYear();
 
 //
 $(window).on("load", function() {
+	const cancelIcon = `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="cancel-icon"
+      style="cursor: pointer; position: absolute; top: 10px; right: 10px;"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  `;
+	
 
 	$(".loader .inner").fadeOut(500, function() {
 		$(".loader").fadeOut(750);
 	});
 
+	// $(".navbar-toggler-icon").on('click', function() {
+	// 	setTimeout(() => {
+	// 		$(".navbar-toggler-icon .bi-x-lg ").append(cancelIcon)
+	// 	}, 1000)
+	// });
 })
 // 
 
 
 // 
 $(document).ready(function() {
+	const cancelIcon = `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="cancel-icon"
+      style="cursor: pointer; position: absolute; top: 10px; right: 10px;"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  `;
+  const icon2 =`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+</svg>`
 
 	$('#slides').superslides({
 		animation: 'fade',
@@ -35,16 +80,20 @@ $(document).ready(function() {
 
 	$('.typed-cursor').addClass('cursor-typed'); 
 	
-	console.log($('.navbar-toggler > span')[0].classList.value == 'navbar-toggler-icon' );
+	console.log($('.navbar-toggler > span > svg')[0].classList.value == 'navbar-toggler-icon' );
 
 	$('.navbar-toggler').click( function(){
 
 		if($('.navbar-toggler > span')[0].classList.value == 'navbar-toggler-icon'){
 			$('.navbar-toggler > span').toggleClass();			
+			$('.navbar-toggler > span > svg').toggleClass();
 			$('.navbar-toggler > span').addClass('bi-x-lg white');
+			$('.navbar-toggler > span > svg').addClass('bi-x-lg white');
 		}else{
 			$('.navbar-toggler > span').toggleClass();
+			$('.navbar-toggler > span > svg').toggleClass();
 			$('.navbar-toggler > span').addClass('navbar-toggler-icon');
+			$('.navbar-toggler > span > svg').addClass('bi-x-lg white hidden');
 		}
 
 	});
@@ -181,7 +230,8 @@ $(document).ready(function() {
 	}
 
 	function updatePopoverTrigger() {
-		const triggerType = window.innerWidth < 768 ? 'click' : 'hover';
+		const triggerType = window.innerWidth < 768 ? 'none' : 'hover';
+		// const triggerType = 'hover';
 		$('[data-toggle="popover"]').popover('dispose'); // Destroy any existing popovers
 		$('[data-toggle="popover"]').popover({
 		  trigger: triggerType
