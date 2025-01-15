@@ -82,21 +82,49 @@ $(document).ready(function() {
 	
 	console.log($('.navbar-toggler > span > svg')[0].classList.value == 'navbar-toggler-icon' );
 
-	$('.navbar-toggler').click( function(){
+	
 
-		if($('.navbar-toggler > span')[0].classList.value == 'navbar-toggler-icon'){
-			$('.navbar-toggler > span').toggleClass();			
-			$('.navbar-toggler > span > svg').toggleClass();
-			$('.navbar-toggler > span').addClass('bi-x-lg white');
-			$('.navbar-toggler > span > svg').addClass('bi-x-lg white');
-		}else{
-			$('.navbar-toggler > span').toggleClass();
-			$('.navbar-toggler > span > svg').toggleClass();
-			$('.navbar-toggler > span').addClass('navbar-toggler-icon');
-			$('.navbar-toggler > span > svg').addClass('bi-x-lg white hidden');
-		}
+	if (typeof jQuery !== 'undefined') {
+		$('.navbar-toggler').click( function(){
 
-	});
+			if($('.navbar-toggler > span')[0].classList.value == 'navbar-toggler-icon'){
+				$('.navbar-toggler > span').toggleClass();			
+				$('.navbar-toggler > span > svg').toggleClass();
+				$('.navbar-toggler > span').addClass('bi-x-lg white');
+				$('.navbar-toggler > span > svg').addClass('bi-x-lg white');
+			}else{
+				$('.navbar-toggler > span').toggleClass();
+				$('.navbar-toggler > span > svg').toggleClass();
+				$('.navbar-toggler > span').addClass('navbar-toggler-icon');
+				$('.navbar-toggler > span > svg').addClass('bi-x-lg white hidden');
+			}
+	
+		});
+	  } else {
+		// Fallback to vanilla JavaScript
+		document.querySelector('.navbar-toggler').addEventListener('click', function () {
+			const togglerSpan = document.querySelector('.navbar-toggler > span');
+			const togglerSvg = document.querySelector('.navbar-toggler > span > svg');
+		  
+			if (togglerSpan.classList.value === 'navbar-toggler-icon') {
+			  // Clear all classes
+			  togglerSpan.className = '';
+			  togglerSvg.className = '';
+		  
+			  // Add the new classes
+			  togglerSpan.classList.add('bi-x-lg', 'white');
+			  togglerSvg.classList.add('bi-x-lg', 'white');
+			} else {
+			  // Clear all classes
+			  togglerSpan.className = '';
+			  togglerSvg.className = '';
+		  
+			  // Add the default classes back
+			  togglerSpan.classList.add('navbar-toggler-icon');
+			  togglerSvg.classList.add('bi-x-lg', 'white', 'hidden');
+			}
+		  });
+	  }
 
 
 	$('.owl-carousel').owlCarousel({
