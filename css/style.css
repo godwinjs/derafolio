@@ -35,7 +35,7 @@ button:focus {
   background-size: cover;
   background-repeat: no-repeat;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 660px) {
   .slides-navigation {
     visibility: hidden;
   }
